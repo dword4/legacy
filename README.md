@@ -1,3 +1,3 @@
 # melchior
 
-Revisiting the old concept
+Revisiting the old concept to build a DIY intel gathering system
