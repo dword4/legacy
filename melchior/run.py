@@ -10,3 +10,9 @@ __version__ = "1.0.1"
 __maintainer__ = "Drew Hynes"
 __email__ = "drew.hynes@gmail.com"
 __status__ = "In Development"
+
+from ingest import IngestFile
+
+igf = IngestFile()
+
+print(igf.loadFile('somefile.txt'))
