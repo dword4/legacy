@@ -12,7 +12,28 @@ __email__ = "drew.hynes@gmail.com"
 __status__ = "In Development"
 
 from ingest import IngestFile
+from search import Search
 
 igf = IngestFile()
+isf = Search()
 
-print(igf.loadFile('somefile.txt'))
+igf.loadFile('somefile.txt')
+"""
+wordset = ['goat','success','Please','smite','Conan','how']
+
+score = 0
+wt = 1 # this is temporary
+
+for word in wordset:
+    result = isf.searchSimple(igf.loadFile('somefile.txt'), word )
+    if result == True:
+        score += 1
+    else:
+        # no change to score
+        pass
+
+print("Score: "+str(score))
+"""
+
+#print(igf.data)
+print(isf.searchJoint(igf.data, 'Project','Gutenberg','1',5))

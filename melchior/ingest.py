@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-""" run.py: Runs the various components that comprise the Melchior tool """
+""" ingest.py: class containing ingestion related code """
 
 __author__ = "Drew Hynes"
 __copyright__ = "Copyright 2018"
@@ -18,6 +18,8 @@ __status__ = "In Development"
 import os
 
 class IngestFile(object):
+
+    data = ''
 
     def loadFile(self, filename):
         if os.path.isfile(filename) == False:
@@ -37,6 +39,6 @@ class IngestFile(object):
                 fh = file.read()
                 file.close()
 
-
             pass
-        return fh
+        self.data = fh
+        #return fh
