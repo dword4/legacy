@@ -16,6 +16,12 @@ __status__ = "In Development"
 """
 
 import os
+import logging
+
+from configparser import ConfigParser
+
+config = ConfigParser()
+config.read('melchior.conf')
 
 class IngestFile(object):
 
@@ -26,19 +32,23 @@ class IngestFile(object):
             # cannot find the file
             # need to handle errors better, since this is not a try/catch exceptions
             # dont want to raise cleanly
-            print("Failed to find the file:"+filename)
+            logging.error('Failed to find file: '+filename)
+            #print("Failed to find the file:"+filename)
+
         else:
             # file is there, proceed
             fileSize = os.path.getsize(filename)
-            maxFileSize = 1073741824 # this needs to be configuration driven later, currently 1G limit for testing
+            maxFileSize = int(config.get('global','max_filesize'))
             if fileSize > maxFileSize:
+                logging.info('File '+filename+' is too large to load, check max_filesize value in melchior.conf')
                 print("File is too large!")
+                return
             else:
                 # file is ok, continue
                 file = open(filename, "r")
                 fh = file.read()
                 file.close()
+                self.data = fh
+                return
 
-            pass
-        self.data = fh
-        #return fh
+        return 

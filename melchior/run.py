@@ -13,11 +13,25 @@ __status__ = "In Development"
 
 from ingest import IngestFile
 from search import Search
+from configparser import ConfigParser
+
+import logging
+
+logging.basicConfig(filename='run.log',level=logging.DEBUG) # make config driven later
+logging.info('---Start Run---')
+config = ConfigParser()
+config.read('melchior.conf')
 
 igf = IngestFile()
 isf = Search()
 
-igf.loadFile('somefile.txt')
+filename = 'somefile.txt' # temporary for testing purposes
+try:
+    logging.info('Trying to load file:'+filename)
+    igf.loadFile(filename)
+    logging.info('Successfully loaded file:'+filename)
+except my:
+    print("failed to load file")
 """
 wordset = ['goat','success','Please','smite','Conan','how']
 
@@ -35,5 +49,4 @@ for word in wordset:
 print("Score: "+str(score))
 """
 
-#print(igf.data)
 print(isf.searchJoint(igf.data, 'Project','Gutenberg','1',5))
