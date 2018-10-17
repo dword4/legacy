@@ -33,7 +33,7 @@ class IngestFile(object):
             # need to handle errors better, since this is not a try/catch exceptions
             # dont want to raise cleanly
             logging.error('Failed to find file: '+filename)
-            #print("Failed to find the file:"+filename)
+            print("Failed to find the file:"+filename)
 
         else:
             # file is there, proceed
@@ -51,4 +51,4 @@ class IngestFile(object):
                 self.data = fh
                 return
 
-        return 
+        return
