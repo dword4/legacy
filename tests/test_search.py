@@ -17,7 +17,7 @@ class BasicTestSuite(unittest.TestCase):
     
     def test_forward_searchJoint(self):
         result = isf.searchJoint(corpus_complex, 'decent', 'respect', '1',  5)
-        self.assertEqual(result, 5)
+        self.assertEqual(result, 0)
 
     def test_twoway_searchJoint(self):
         result = isf.searchJoint(corpus_complex, 'respect', 'decent', '2', 5)
