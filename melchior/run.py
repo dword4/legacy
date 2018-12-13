@@ -50,3 +50,4 @@ print("Score: "+str(score))
 """
 
 print(isf.searchJoint(igf.data, 'Project','Gutenberg','1',5))
+print(isf.searchJoint(igf.data, 'laws','are','1',15))
