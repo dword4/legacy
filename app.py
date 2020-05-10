@@ -11,7 +11,8 @@ logging.info('[START]')
 
 if __name__ == '__main__':
     n = Ingest()
+    s = Search()
     n.File('target.txt')
-    print(type(n.data))
     print("melchior online")
+    s.simpleSearch("sausage",n.data)
     logging.info('[END]')

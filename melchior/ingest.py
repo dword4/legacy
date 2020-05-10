@@ -23,15 +23,16 @@ config.read('melchior.conf')
 
 class Ingest(object):
 
-    module_name = '[Ingest]'
+    module_name = 'melchior.ingest'
 
+    data = ''
     # ingest a raw file from disk
     def File(self,filename):
         if os.path.isfile(filename) == False:
             # cannot find the file
             # need to handle errors better, since this is not a try/catch exceptions
             # dont want to raise cleanly
-            logging.error('Failed to find file: '+filename)
+            logging.error(self.module_name+' Failed to find file: '+filename)
             print("Failed to find the file:"+filename)
 
         else:
@@ -39,7 +40,7 @@ class Ingest(object):
             fileSize = os.path.getsize(filename)
             maxFileSize = int(config.get('global','max_filesize'))
             if fileSize > maxFileSize:
-                logging.info('File '+filename+' is too large to load, check max_filesize value in melchior.conf')
+                logging.info(self.module_name+' File '+filename+' is too large to load, check max_filesize value in melchior.conf')
                 print("File is too large!")
                 return
             else:
@@ -48,8 +49,9 @@ class Ingest(object):
                 fh = file.read()
                 file.close()
                 self.data = fh
-                logging.info('File '+filename+' successfully ingested')
+                logging.info(self.module_name+' File '+filename+' successfully ingested')
                 return
 
         return
+    
 
