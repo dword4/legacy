@@ -31,5 +31,7 @@ class Search(object):
         """
         if (body.find(criteria) != -1):
             print("hit: %s" % criteria)
+            return True
         else:
             print("failed on %s" % criteria)
+            return False
